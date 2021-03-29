@@ -7,9 +7,8 @@ import org.testng.annotations.Test;
 
 public class TodoPageTests extends BaseTest {
 
-
-
-    @DataProvider Object[][] ListTask(){
+    @DataProvider
+    Object[][] ListTask() {
         return new Object[][]{
                 new Object[]{"01. Do HomeWork"},
                 new Object[]{"02. Lunch"},
@@ -24,8 +23,9 @@ public class TodoPageTests extends BaseTest {
                 new Object[]{"11. Shoot the plate"},
         };
     }
+
     @Test(dataProvider = "ListTask")
-    void addNewTask(String task_name){
+    void addNewTask(String task_name) {
         TodoFunctions functions = new TodoFunctions(driver);
         functions.open();
         functions.add(task_name);
