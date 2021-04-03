@@ -16,7 +16,7 @@ public class TodoPageTests extends BaseTest {
                 new Object[]{"98830031"},
                 new Object[]{"7820038831"},
                 new Object[]{"90119928231892883991882992821100000111"},
-                new Object[]{"^&&@@(!(&@  !"},
+                new Object[]{"^&&@@(!(&@"},
                 new Object[]{"11. Shoot the plate"},
         };
     }
