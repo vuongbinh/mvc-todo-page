@@ -1,6 +1,7 @@
 package testcase;
 
 import TodoFunctions.TodoFunctions;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,25 +11,43 @@ public class TodoPageTests extends BaseTest {
     @DataProvider
     Object[][] ListTask() {
         return new Object[][]{
-                new Object[]{"01. Do HomeWork"},
-                new Object[]{"02. Lunch"},
-                new Object[]{"03. Play"},
-                new Object[]{"04. Watch TV"},
-                new Object[]{"05. Play football"},
-                new Object[]{"06. Walking on the Moon"},
-                new Object[]{"07. Go to the school"},
-                new Object[]{"08. Commit code to Github"},
-                new Object[]{"09. Sleeping"},
-                new Object[]{"10. Go to the store"},
+                new Object[]{"Do HomeWork"},
+                new Object[]{"@$!@8#"},
+                new Object[]{"98830031"},
+                new Object[]{"7820038831"},
+                new Object[]{"90119928231892883991882992821100000111"},
+                new Object[]{"^&&@@(!(&@  !"},
                 new Object[]{"11. Shoot the plate"},
         };
     }
 
     @Test(dataProvider = "ListTask")
     void addNewTask(String task_name) {
-        TodoFunctions functions = new TodoFunctions(driver);
-        functions.open();
-        functions.add(task_name);
-        Assert.assertTrue(functions.getResult(task_name));
+        TodoFunctions todo = new TodoFunctions(driver);
+        todo.open();
+        int itemsBefore = todo.countItems();
+        todo.add(task_name);
+        int itemsAfter = todo.countItems();
+        Assert.assertTrue(todo.isExist(task_name));
+        Assert.assertEquals(itemsAfter-itemsBefore,1);
+    }
+
+    @DataProvider
+    Object[][] ListEditTask() {
+        return new Object[][]{
+                new Object[]{"01. Do HomeWork", "01. Do HomeWork - edited"},
+        };
+    }
+
+    @Test(dataProvider = "ListTask")
+    void remove(String task_name) {
+        TodoFunctions todo = new TodoFunctions(driver);
+        todo.open();
+        int before = todo.countItems();
+        todo.remove(task_name);
+        int after = todo.countItems();
+
+        Assert.assertEquals(after-before,-1);
+
     }
 }

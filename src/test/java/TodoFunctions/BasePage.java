@@ -11,7 +11,4 @@ public abstract class BasePage {
 
     protected abstract void open();
 
-    public String getCurrentURL() {
-        return driver.getCurrentUrl();
-    }
 }
