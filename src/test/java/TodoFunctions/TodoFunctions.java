@@ -18,7 +18,7 @@ public class TodoFunctions extends BasePage {
     }
 
     public By getLocator(String task_name){
-        return By.xpath(String.format("//label[.='%%s']/following-sibling::button%s", task_name));
+        return By.xpath(String.format("//label[.='%s']/following-sibling::button", task_name));
     }
 
     @Override
