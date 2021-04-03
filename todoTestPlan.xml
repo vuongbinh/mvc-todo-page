@@ -1,0 +1,7 @@
+<suite name="Smoke Test">
+    <test name="TestNG">
+        <classes>
+            <class name = "testcase.TodoPageTests"/>
+        </classes>
+    </test>
+</suite>
