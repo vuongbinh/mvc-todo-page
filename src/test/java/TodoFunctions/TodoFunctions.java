@@ -18,7 +18,7 @@ public class TodoFunctions extends BasePage {
     }
 
     public By getLocator(String task_name){
-        return By.xpath("//label[.='%s']/following-sibling::button".formatted(task_name));
+        return By.xpath(String.format("//label[.='%%s']/following-sibling::button%s", task_name));
     }
 
     @Override
@@ -27,7 +27,7 @@ public class TodoFunctions extends BasePage {
     }
 
     public boolean isExist(String task_name) {
-        return driver.findElement(By.xpath(locatorResult.formatted(task_name))).getText().contains(task_name);
+        return driver.findElement(By.xpath(String.format(locatorResult,task_name))).getText().contains(task_name);
     }
 
     public void add(String task_name) {
@@ -36,7 +36,7 @@ public class TodoFunctions extends BasePage {
 
     public void remove(String task_name){
         Actions mouse = new Actions(driver);
-        WebElement ava = driver.findElement(By.xpath(locatorResult.formatted(task_name)));
+        WebElement ava = driver.findElement(By.xpath(String.format(locatorResult,task_name)));
         mouse
                 .moveToElement(ava)
                 .perform();
