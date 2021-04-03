@@ -34,18 +34,6 @@ public class TodoFunctions extends BasePage {
         driver.findElement(todoTxt).sendKeys(task_name,Keys.ENTER);
     }
 
-    public void edit(String task_name, String new_name) {
-        Actions actions = new Actions(driver);
-        actions.doubleClick
-                (driver.findElement(By.xpath(locatorResult.formatted(task_name))))
-                .perform();
-        driver.findElement(By.cssSelector(".edit")).
-                sendKeys(Keys.chord(Keys.COMMAND,"a"),
-                        Keys.BACK_SPACE,
-                        new_name,
-                        Keys.ENTER);
-    }
-
     public void remove(String task_name){
         Actions mouse = new Actions(driver);
         WebElement ava = driver.findElement(By.xpath(locatorResult.formatted(task_name)));
